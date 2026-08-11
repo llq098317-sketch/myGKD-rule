@@ -36,13 +36,15 @@ jobs:
           git add .
           if ! git diff --cached --quiet; then
             git -c core.hooksPath=/dev/null commit -m "chore: v${{steps.version.outputs.version}}"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes to commit"
           fi
         continue-on-error: false
 
       - name: Git push
-        if: ${{ steps.commit.outcome == 'success' }}
+        if: ${{ steps.commit.outputs.changed == 'true' }}
         uses: ad-m/github-push-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -50,7 +52,7 @@ jobs:
           tags: true
 
       - name: Create Release
-        if: ${{ steps.commit.outcome == 'success' }}
+        if: ${{ steps.commit.outputs.changed == 'true' }}
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
