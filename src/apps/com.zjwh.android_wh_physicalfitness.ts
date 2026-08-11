@@ -23,5 +23,21 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '开屏广告-跳过',
+      desc: '开屏广告左上角的倒计时跳过按钮',
+      resetMatch: 'app',
+      activityIds: [
+        'com.zjwh.android_wh_physicalfitness.mvi.splash.SplashActivity',
+      ],
+      rules: [
+        {
+          matches:
+            '[id="com.zjwh.android_wh_physicalfitness:id/tev_countdown"]',
+          snapshotUrls: ['https://i.gkd.li/i/30922747'],
+        },
+      ],
+    },
   ],
 });
