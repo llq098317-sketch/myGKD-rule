@@ -1,6 +1,9 @@
 name: build_release
 
-on: workflow_dispatch
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
 
 jobs:
   build_release:
@@ -30,10 +33,13 @@ jobs:
         run: |
           git config --local user.email github-actions[bot]@users.noreply.github.com
           git config --local user.name github-actions[bot]
-          git status
           git add .
-          git commit -a -m "chore: v${{steps.version.outputs.version}}"
-        continue-on-error: true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: v${{steps.version.outputs.version}}"
+          else
+            echo "No changes to commit"
+          fi
+        continue-on-error: false
 
       - name: Git push
         if: ${{ steps.commit.outcome == 'success' }}

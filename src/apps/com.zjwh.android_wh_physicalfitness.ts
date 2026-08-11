@@ -8,7 +8,6 @@ export default defineGkdApp({
       key: 1,
       name: '广告-关闭按钮',
       desc: '首页中下方广告与登录页广告右上角/左上角的关闭按钮',
-      actionMaximum: 1,
       resetMatch: 'app',
       activityIds: [
         'com.zjwh.android_wh_physicalfitness.mvi.home.HomeActivity',
