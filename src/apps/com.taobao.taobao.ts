@@ -41,5 +41,18 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 4,
+      name: '红包弹窗-返回关闭',
+      desc: '检测到弹层容器时按返回键关闭红包弹窗',
+      resetMatch: 'app',
+      activityIds: ['com.taobao.tao.welcome.Welcome'],
+      rules: [
+        {
+          matches: '[id="com.taobao.taobao:id/poplayer_inner_view"]',
+          action: 'back',
+        },
+      ],
+    },
   ],
 });
