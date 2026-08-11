@@ -10,7 +10,7 @@ export default defineGkdGlobalGroups([
     rules: [
       {
         matches:
-          '[text~="^\\\\s*\\\\d+\\\\s*[sS秒]?\\\\s*[|｜]\\\\s*跳过\\\\s*$"]',
+          '[text~="^(\\\\d+[sS秒]?\\\\s*[|｜]?\\\\s*跳过|跳过\\\\s*[|｜]?\\\\s*\\\\d+[sS秒]?)$"]',
       },
     ],
   },
