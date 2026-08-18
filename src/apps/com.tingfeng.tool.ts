@@ -20,7 +20,7 @@ export default defineGkdApp({
           key: 1,
           name: '确认退出',
           preKeys: [0],
-          matches: '[text="坚持退出"]',
+          anyMatches: ['[text="坚持退出"]', '[text="残忍离开"]'],
         },
       ],
     },
