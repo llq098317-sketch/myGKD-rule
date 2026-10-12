@@ -16,5 +16,16 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '更新弹窗-取消',
+      desc: '更新提醒弹窗点「取消」关闭；弹窗内「取消」与「去更新」为相邻兄弟，据此锚定，避免误点其它界面的取消',
+      resetMatch: 'app',
+      rules: [
+        {
+          matches: '[text="去更新"] - [text="取消"]',
+        },
+      ],
+    },
   ],
 });
